@@ -22,13 +22,3 @@ function createStore() {
         subscribe
     }
 }
-
-const store = createStore()
-store.subscribe(() => {
-    console.log('The new state is: ', store.getState())
-})
-const unsubscribe = store.subscribe(() => {
-    console.log('The store changed.')
-})
-
-unsubscribe()
