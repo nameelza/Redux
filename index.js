@@ -13,3 +13,5 @@ function createStore() {
         getState
     }
 }
+
+const store = createStore()
