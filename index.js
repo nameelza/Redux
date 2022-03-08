@@ -1,5 +1,5 @@
 function todos(state = [], action) {
-  if (action === "ADD_TODO") {
+  if (action.type === "ADD_TODO") {
     return state.concat([action.todo])
   }
 
