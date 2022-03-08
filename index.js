@@ -1,6 +1,6 @@
 function todos(state = [], action) {
   if (action === "ADD_TODO") {
-    state.concat([action.todo]);
+    return state.concat([action.todo])
   }
 
   return state;
