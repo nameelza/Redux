@@ -40,3 +40,7 @@ function todos(state = [], action) {
 }
 
 const store = createStore(todos)
+
+store.subscribe(() => {
+    console.log("The new state is: ", store.getState())
+})
