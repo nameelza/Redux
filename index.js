@@ -38,3 +38,5 @@ function todos(state = [], action) {
 
   return state;
 }
+
+const store = createStore(todos)
