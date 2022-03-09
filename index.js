@@ -31,6 +31,12 @@ function createStore(reducer) {
 }
 
 // App Code
+const ADD_TODO = "ADD_TODO"
+const REMOVE_TODO = "REMOVE_TODO"
+const TOGGLE_TODO = "TOGGLE_TODO"
+const ADD_GOAL = "ADD_GOAL"
+const REMOVE_GOAL = "REMOVE_GOAL"
+
 function todos(state = [], action) {
   switch (action.type) {
     case "ADD_TODO":
