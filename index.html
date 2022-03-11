@@ -98,7 +98,7 @@
         };
       }
 
-      //Reducers
+      // Reducers
       function todos(state = [], action) {
         switch (action.type) {
           case ADD_TODO:
@@ -135,7 +135,8 @@
       //   }
 
       // Passing the root reducer to our store since our createStore function can only take one reducer.
-      const store = Redux.createStore(Redux.combineReducers({
+      const store = Redux.createStore(
+        Redux.combineReducers({
           todos,
           goals,
         })
@@ -210,10 +211,6 @@
         node.appendChild(text);
 
         document.getElementById("goals").appendChild(node);
-      }
-
-      function toggleTodo(todo) {
-        store.dispatch(toggleTodoAction(1));
       }
 
       document.getElementById("todoBtn").addEventListener("click", addTodo);
