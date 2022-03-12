@@ -144,13 +144,21 @@
         return next(action);
       };
 
-      // Passing the root reducer using 'combineReducers' to our store since our createStore function can only take one reducer.
+      const logger = (store) => (next) => (action) => {
+        console.group(action.type);
+          console.log("The action: ", action);
+          const result = next(action);
+          console.log("The new state: ", store.getState());
+        console.groupEnd();
+        return result;
+      };
+
       const store = Redux.createStore(
         Redux.combineReducers({
           todos,
           goals,
         }),
-        Redux.applyMiddleware(checker)
+        Redux.applyMiddleware(checker, logger)
       );
 
       store.subscribe(() => {
