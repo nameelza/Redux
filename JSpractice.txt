@@ -1,0 +1,68 @@
+// REVERSE ARRAY
+
+
+const reverseArrayFirst = (array) => {
+    newArray = [];
+    for (let element of array) {
+        newArray.unshift(element)
+    }
+    return newArray;
+}
+
+const reverseArraySecond = (array) => {
+    newArray = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+        newArray.push(array[i]);
+    }
+    return newArray;
+}
+
+const reverseArrayInPlaceFirst = (array) => {
+    for (let item of [...array]) {
+        array.unshift(item);
+        array.pop();
+    }
+    return array;
+}
+
+const reverseArrayInPlaceSecond = (array) => {
+    for (let i=0; i<= Math.floor(array.length/2); i++) {
+        let swap = array[i];
+        array[i] = array[array.length-1-i];
+        array[array.length-1-i] = swap;
+    }
+    return array;
+}
+
+console.log(reverseArraySecond([2, 4, 6]))
+
+// DEEP COMPARISON OF OBJECTS
+
+const deepEqual = (obj1, obj2) => {
+    if (obj1 === obj2) {
+        return true;
+    } else if (!isObject(obj1) || !isObject(obj2)) {
+        return false;
+    }
+    let keys1 = Object.keys(obj1);
+    let keys2 = Object.keys(obj2);
+    
+    if (keys1.length !== keys2.length) {
+        return false;
+    }
+    
+    for (key of keys1) {
+        val1 = obj1[key];
+        val2 = obj2[key];
+        areObjects = isObject(val1) && isObject(val2);
+        if ((!areObjects && val1 !== val2) ||
+            (areObjects && !deepEqual(val1, val2))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const isObject = (obj) => {
+    return obj !== null && typeof obj === "object";
+}
