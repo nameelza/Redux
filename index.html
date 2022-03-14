@@ -20,6 +20,10 @@
       <button id="goalBtn">Add Goal</button>
       <ul id="goals"></ul>
     </div>
+
+    <hr />
+
+    <div id="app"></div>
     <script type="text/javascript">
       function generateId() {
         return (
@@ -241,6 +245,22 @@
 
       document.getElementById("todoBtn").addEventListener("click", addTodo);
       document.getElementById("goalBtn").addEventListener("click", addGoal);
+    </script>
+    <script type="text/babel">
+      class App extends React.Component {
+        render() {
+          return (
+            <div>
+                APP
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('app')
+      )
     </script>
   </body>
 </html>
