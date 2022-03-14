@@ -250,7 +250,11 @@
       function List(props) {
         return (
           <ul>
-            <li>item</li>
+            {props.items.map((item) => (
+              <li key={item.id}>
+                <span>{item.name}</span>
+              </li>
+            ))}
           </ul>
         );
       }
@@ -279,7 +283,7 @@
                 ref={(input) => (this.input = input)}
               />
               <button onClick={this.addItem}>Add Todo</button>
-              <List />
+              <List items={this.props.todos} />
             </div>
           );
         }
@@ -304,26 +308,25 @@
               <h1>Goals</h1>
               <input
                 type="text"
-                placeholder="Agg Goal"
+                placeholder="Add Goal"
                 ref={(input) => (this.input = input)}
               />
               <button onClick={this.addItem}>Add Goal</button>
-              <List />
+              <List items={this.props.goals} />
             </div>
           );
         }
       }
 
       class App extends React.Component {
-          componentDidMount() {
-            const { store } = this.props;
+        componentDidMount() {
+          const { store } = this.props;
 
-            store.subscribe(() => this.forceUpdate())
-
-          }
+          store.subscribe(() => this.forceUpdate());
+        }
         render() {
           const { store } = this.props;
-          const { todos, goals } = store.getState;
+          const { todos, goals } = store.getState();
 
           return (
             <div>
