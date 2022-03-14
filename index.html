@@ -259,7 +259,13 @@
         render() {
           return (
             <div>
-              TODOS
+              <h1>Todo List</h1>
+              <input
+                type="text"
+                placeholder="Add Todo"
+                ref={(input) => this.input = input}
+              />
+              <button>Add Todo</button>
               <List />
             </div>
           );
