@@ -193,8 +193,8 @@
 
           return API.saveTodoToggle(item.id).catch(() => {
             this.props.store.dispatch(toggleTodoAction(item.id));
-            alert("An error occurred. Try again")
-          })
+            alert("An error occurred. Try again");
+          });
         };
 
         render() {
@@ -237,7 +237,7 @@
           return API.deleteGoal(item.id).catch(() => {
             this.props.store.dispatch(addGoalAction(item));
             alert("An error occured. Try again");
-          })
+          });
         };
 
         render() {
