@@ -17,7 +17,6 @@
           new Date().getTime().toString(36)
         );
       }
-
       // App Code
       const ADD_TODO = "ADD_TODO";
       const REMOVE_TODO = "REMOVE_TODO";
@@ -122,10 +121,8 @@
         }),
         Redux.applyMiddleware(checker, logger)
       );
-
     </script>
     <script type="text/babel">
-
       function List(props) {
         return (
           <ul>
@@ -133,8 +130,11 @@
               <li key={item.id}>
                 <span
                   onClick={() => props.toggle && props.toggle(item)}
-                  style={{textDecoration:item.complete ? 'line-through' : 'none'}}>
-                    {item.name}
+                  style={{
+                    textDecoration: item.complete ? "line-through" : "none",
+                  }}
+                >
+                  {item.name}
                 </span>
                 <button onClick={() => props.remove(item)}>X</button>
               </li>
@@ -225,6 +225,12 @@
           const { store } = this.props;
 
           store.subscribe(() => this.forceUpdate());
+          Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
+            ([todos, goals]) => {
+              console.log("Todos", todos);
+              console.log("Goals", goals);
+            }
+          );
         }
         render() {
           const { store } = this.props;
