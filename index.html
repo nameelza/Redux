@@ -72,12 +72,12 @@
       function handleDeleteTodo(item) {
         return (dispatch) => {
           dispatch(removeTodoAction(item.id));
-        };
 
-        return API.deleteTodo(item.id).catch(() => {
-          dispatch(addTodoAction(item));
-          alert("An error occurred. Try again");
-        });
+          return API.deleteTodo(item.id).catch(() => {
+            dispatch(addTodoAction(item));
+            alert("An error occurred. Try again");
+          });
+        };
       }
 
       // Reducers
