@@ -93,6 +93,17 @@
         };
       }
 
+      function handleDeleteGoal(item) {
+        return (dispatch) => {
+          dispatch(removeGoalAction(item.id));
+
+          return API.deleteGoal(item.id).catch(() => {
+            dispatch(addGoalAction(item));
+            alert("An error occured. Try again");
+          });
+        };
+      }
+
       // Reducers
       function todos(state = [], action) {
         switch (action.type) {
@@ -254,12 +265,7 @@
         };
 
         removeItem = (item) => {
-          this.props.store.dispatch(removeGoalAction(item.id));
-
-          return API.deleteGoal(item.id).catch(() => {
-            this.props.store.dispatch(addGoalAction(item));
-            alert("An error occured. Try again");
-          });
+          this.props.store.dispatch(handleDeleteGoal(item.id));
         };
 
         render() {
