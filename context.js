@@ -1,27 +1,27 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
 const Context = React.createContext();
 
-function Parent ({ name }) {
+function Parent({ name }) {
   return (
     <div>
       <h1>Parent</h1>
-      <Child name={name}/>
+      <Child name={name} />
     </div>
   );
 }
 
-function Child ({ name }) {
+function Child({ name }) {
   return (
     <div>
       <h1>Child</h1>
-      <Grandchild name={name}/>
+      <Grandchild name={name} />
     </div>
   );
 }
 
-function Grandchild ({ name }) {
+function Grandchild({ name }) {
   return (
     <div>
       <h1>Grandchild</h1>
@@ -30,39 +30,43 @@ function Grandchild ({ name }) {
   );
 }
 
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
-function Parent ({ name }) {
+function Parent({ name }) {
   return (
     <div>
       <h1>Parent</h1>
-      <Child name={name}/>
+      <Child name={name} />
     </div>
   );
 }
 
-function Child ({ name }) {
+function Child({ name }) {
   return (
     <div>
       <h1>Child</h1>
-      <Grandchild name={name}/>
+      <Grandchild name={name} />
     </div>
   );
 }
 
-function Grandchild ({ name }) {
+function Grandchild({ name }) {
   return (
-    <div>
-      <h1>Grandchild</h1>
-      <h3>Name: {name}</h3>
-    </div>
+    <Context.Consumer>
+      {(name) => (
+        <div>
+          <h1>Grandchild</h1>
+          <h3>Name: {name}</h3>
+        </div>
+      )}
+    </Context.Consumer>
   );
 }
 
 class App extends React.Component {
   render() {
-    const name = 'Tyler';
+    const name = "Tyler";
 
     return (
       <Context.Provider value={name}>
@@ -72,14 +76,7 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById('root'));
-
-
-
-
-
-
-
+render(<App />, document.getElementById("root"));
 
 class App extends React.Component {
   render() {
@@ -89,6 +86,6 @@ class App extends React.Component {
       <div>
         <Parent />
       </div>
-    )
+    );
   }
 }
