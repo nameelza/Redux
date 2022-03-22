@@ -335,10 +335,20 @@
 
       const Context = React.createContext();
 
+      class Provider extends React.Component {
+        render() {
+          return (
+            <Context.Provider value={this.props.store}>
+              {this.props.children}
+            </Context.Provider>
+          );
+        }
+      }
+
       ReactDOM.render(
-        <Context.Provider value={store}>
+        <Provider store={store} >
           <App />
-        </Context.Provider>,
+        </Provider>,
         document.getElementById("app")
       );
     </script>
