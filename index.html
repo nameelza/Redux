@@ -335,7 +335,12 @@
 
       const Context = React.createContext();
 
-      ReactDOM.render(<App store={store} />, document.getElementById("app"));
+      ReactDOM.render(
+        <Context.Provider value={store}>
+          <App />
+        </Context.Provider>,
+        document.getElementById("app")
+      );
     </script>
   </body>
 </html>
