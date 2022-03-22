@@ -246,17 +246,17 @@
         addItem = (e) => {
           e.preventDefault();
 
-          this.props.store.dispatch(
+          this.props.dispatch(
             handleAddTodo(this.input.value, () => (this.input.value = ""))
           );
         };
 
         removeItem = (item) => {
-          this.props.store.dispatch(handleDeleteTodo(item));
+          this.props.dispatch(handleDeleteTodo(item));
         };
 
         toggleItem = (item) => {
-          this.props.store.dispatch(handleToggleTodo(item.id));
+          this.props.dispatch(handleToggleTodo(item.id));
         };
 
         render() {
@@ -346,7 +346,7 @@
         }
         render() {
           const { store } = this.props;
-          const { todos, loading } = store.getState();
+          const { loading } = store.getState();
 
           if (loading) {
             return <h3>Loading...</h3>;
@@ -354,7 +354,7 @@
 
           return (
             <div>
-              <Todos todos={todos} store={this.props.store} />
+              <ConnectedTodos/>
               <ConnectedGoals/>
             </div>
           );
@@ -385,7 +385,7 @@
 
       ReactDOM.render(
         <Provider store={store}>
-          <App />
+          <ConnectedApp />
         </Provider>,
         document.getElementById("app")
       );
