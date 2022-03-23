@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <script src="https://tylermcginnis.com/goals-todos-api/index.js"></script>
     <script src="https://unpkg.com/redux-thunk@2.2.0/dist/redux-thunk.min.js"></script>
+    <script src="https://unpkg.com/react-redux@5.0.6/dist/react-redux.min.js"></script>
   </head>
   <body>
     <div id="app"></div>
@@ -178,6 +179,7 @@
         return state;
       }
 
+      // Middleware
       const checker = (store) => (next) => (action) => {
         if (
           action.type === "ADD_TODO" &&
@@ -204,14 +206,6 @@
         return result;
       };
 
-      // // Thunk Middleware
-      // const thunk = (store) => (next) => (action) => {
-      //   if (typeof action === 'function') {
-      //     return action(store.dispatch)
-      //   }
-      //   return next(action)
-      // }
-
       const store = Redux.createStore(
         Redux.combineReducers({
           todos,
@@ -228,7 +222,7 @@
             {props.items.map((item) => (
               <li key={item.id}>
                 <span
-                  onClick={() => props.toggle && props.toggle(item)}
+                  onClick={() => props.toggle && props.toggle(item.id)}
                   style={{
                     textDecoration: item.complete ? "line-through" : "none",
                   }}
