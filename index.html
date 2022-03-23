@@ -342,6 +342,20 @@
 
       const Context = React.createContext();
 
+      function connect(mapStateToProps) {
+        return (Component) => {
+          class ConnectedComponent extends React.Component {
+            render() {
+              return (
+                <Context.Consumer>
+                  {(store) => <Receiver store={store} />}
+                </Context.Consumer>
+              );
+            }
+          }
+        };
+      }
+
       class Provider extends React.Component {
         render() {
           return (
