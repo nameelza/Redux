@@ -338,17 +338,14 @@
 
       class App extends React.Component {
         componentDidMount() {
-          const { store } = this.props;
+          const { dispatch } = this.props;
 
           store.dispatch(handleInitialData());
 
           store.subscribe(() => this.forceUpdate());
         }
         render() {
-          const { store } = this.props;
-          const { loading } = store.getState();
-
-          if (loading) {
+          if (this.props.loading) {
             return <h3>Loading...</h3>;
           }
 
@@ -361,17 +358,9 @@
         }
       }
 
-      class ConnectedApp extends React.Component {
-        render() {
-          return (
-            <Context.Consumer>
-              {(store) => <App store={store} />}
-            </Context.Consumer>
-          );
-        }
-      }
-
-      const ConnectedApp = connect()();
+      const ConnectedApp = connect((store) => ({
+        loading: store.loading
+      }))(App);
 
       const Context = React.createContext();
 
