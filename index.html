@@ -344,6 +344,27 @@
 
       function connect(mapStateToProps) {
         return (Component) => {
+
+          class Receiver extends React.Component {
+            ComponentDidMount() {
+              const { subscribe } = this.props.store;
+
+              this.unsubscribe = subscribe(() => {
+                this.forceUpdate()
+              })
+            }
+            
+            ComponentWillUnmount() {
+              this.unsubscribe
+            }
+
+            render() {
+              return (
+
+              )
+            }
+          }
+
           class ConnectedComponent extends React.Component {
             render() {
               return (
