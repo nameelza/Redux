@@ -361,7 +361,7 @@
               const { getState, dispatch } = this.props.store;
               const state = getState();
               const stateNeeded = mapStateToProps(state);
-              return <Component />;
+              return <Component {...stateNeeded} dispatch={dispatch} />;
             }
           }
 
