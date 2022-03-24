@@ -334,55 +334,6 @@
         loading: state.loading,
       }))(App);
 
-      // REACT-REDUX CONTEXT LIBRARY CODE
-      // const Context = React.createContext();
-
-      // function connect(mapStateToProps) {
-      //   return (Component) => {
-      //     class Receiver extends React.Component {
-      //       ComponentDidMount() {
-      //         const { subscribe } = this.props.store;
-
-      //         this.unsubscribe = subscribe(() => {
-      //           this.forceUpdate();
-      //         });
-      //       }
-
-      //       ComponentWillUnmount() {
-      //         this.unsubscribe;
-      //       }
-
-      //       render() {
-      //         const { getState, dispatch } = this.props.store;
-      //         const state = getState();
-      //         const stateNeeded = mapStateToProps(state);
-      //         return <Component {...stateNeeded} dispatch={dispatch} />;
-      //       }
-      //     }
-
-      //     class ConnectedComponent extends React.Component {
-      //       render() {
-      //         return (
-      //           <Context.Consumer>
-      //             {(store) => <Receiver store={store} />}
-      //           </Context.Consumer>
-      //         );
-      //       }
-      //     }
-      //     return ConnectedComponent;
-      //   };
-      // }
-
-      // class Provider extends React.Component {
-      //   render() {
-      //     return (
-      //       <Context.Provider value={this.props.store}>
-      //         {this.props.children}
-      //       </Context.Provider>
-      //     );
-      //   }
-      // }
-
       ReactDOM.render(
         <ReactRedux.Provider store={store}>
           <ConnectedApp />
