@@ -1,3 +1,5 @@
+import API from "goals-todos-api";
+
 export const ADD_TODO = "ADD_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
@@ -23,7 +25,7 @@ function toggleTodo(id) {
   };
 }
 
-function handleAddTodo(name, callback) {
+export function handleAddTodo(name, callback) {
   return (dispatch) => {
     return API.saveTodo(name)
       .then((todo) => {
@@ -36,7 +38,7 @@ function handleAddTodo(name, callback) {
   };
 }
 
-function handleDeleteTodo(item) {
+export function handleDeleteTodo(item) {
   return (dispatch) => {
     dispatch(removeTodo(item.id));
 
@@ -47,7 +49,7 @@ function handleDeleteTodo(item) {
   };
 }
 
-function handleToggleTodo(id) {
+export function handleToggleTodo(id) {
   return (dispatch) => {
     dispatch(toggleTodo(id));
 
