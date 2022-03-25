@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ConnectedTodos from '.todos';
-import ConnectedGoals from '.goals';
+import ConnectedTodos from './Todos';
+import ConnectedGoals from './Goals';
 import {
   handleInitialData
 } from '../actions/shared';

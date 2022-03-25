@@ -9,7 +9,7 @@ import {
 
 class Goals extends React.Component {
   addItem = (e) => {
-    e.preventDefault;
+    e.preventDefault();
 
     this.props.dispatch(
       handleAddGoal(this.input.value, () => (this.input.value = ""))
