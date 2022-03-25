@@ -1,9 +1,31 @@
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
+import React from 'react';
+import { connect } from 'react-redux';
+import ConnectedTodos from '.todos';
+import ConnectedGoals from '.goals';
+import {
+  handleInitialData
+} from '../actions/shared';
+
+class App extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(handleInitialData());
+  }
+  render() {
+    if (this.props.loading) {
+      return <h3>Loading...</h3>;
+    }
+
+    return (
+      <div>
+        <ConnectedTodos />
+        <ConnectedGoals />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect((state) => ({
+  loading: state.loading,
+}))(App);
