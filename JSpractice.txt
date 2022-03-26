@@ -66,3 +66,20 @@ const deepEqual = (obj1, obj2) => {
 const isObject = (obj) => {
     return obj !== null && typeof obj === "object";
 }
+
+
+// LINKED LIST
+
+
+const arrayToList = (array) => {
+    let list = {};
+    let nextNode = null;
+    for (let el = array.length-1; el >= 0; el-- ) {
+        list = {
+            value: array[el],
+            pointer: nextNode
+        }
+        nextNode = list
+    }
+    return list
+}
