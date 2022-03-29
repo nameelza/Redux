@@ -107,3 +107,13 @@ const listToArray = (list) => {
     }
     return result
 }
+
+const nth = (list, number) => {
+  if (!list) {
+      return undefined
+  } else if (number == 0) {
+      return list.value
+  } else {
+      return (nth(list.pointer, number-1))
+  }
+}
