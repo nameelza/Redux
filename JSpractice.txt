@@ -83,3 +83,27 @@ const arrayToList = (array) => {
     }
     return list
 }
+
+const arrayToList = (array) => {
+    let list = {};
+    for (let el = array.length-1; el >= 0; el-- ) {
+        console.log("first", list)
+        list = {
+            value: array[el],
+            pointer: list
+        }
+        console.log("second", list)
+    }
+    return list
+}
+
+const listToArray = (list) => {
+    let result = []
+    for (let node = list; node; node = node.pointer) {
+        if (node.pointer === undefined) {
+          return result
+        }
+        result.push(node['value'])
+    }
+    return result
+}
